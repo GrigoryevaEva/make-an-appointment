@@ -1,7 +1,7 @@
-import { IDoctorInfo } from "@/shared/api/doctor/doctorInfo/types"
+import { IDoctorSessions } from "@/shared/api/doctor/doctorSessions/types"
 
 export type State = {
-  readonly doctorInfo: IDoctorInfo
+  readonly doctorSessions: IDoctorSessions
   readonly loading: boolean
   readonly error: null
 }

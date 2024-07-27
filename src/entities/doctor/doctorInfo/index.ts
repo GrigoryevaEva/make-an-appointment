@@ -1,0 +1,1 @@
+export { useDoctorInfo } from "./model/useDoctorInfo";
