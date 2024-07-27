@@ -2,8 +2,8 @@
   "name": "Jane Doe",
   "specialization": "Orthodontist",
   "workingHours": {
-    "startWork": "9:00",
-    "stopWork": "21:00"
+    "start": "9:00",
+    "stop": "21:00"
   },
   "busyTime": [
     {
