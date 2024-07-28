@@ -1,27 +1,18 @@
-import { useEffect } from 'react'
-
-import { useDoctorInfo } from '@/entities/doctor/doctorInfo'
+import { useDoctor } from '@/entities/doctor'
 import { renderContent } from '../model/render'
 
 import style from './style.module.scss'
 
 export const DoctorInfo = () => {
-
   const {
-    doctorInfo, 
+    doctorInfo,
     loading,
-    error,
-    fetchDoctorInfo,
-  } = useDoctorInfo(state => ({
+    error
+  } = useDoctor(state => ({
     doctorInfo: state.doctorInfo,
     loading: state.loading,
     error: state.error,
-    fetchDoctorInfo: state.fetchDoctorInfo
   }))
-
-  useEffect(() => {
-		fetchDoctorInfo()
-	}, [])
 
   return (
     <div>

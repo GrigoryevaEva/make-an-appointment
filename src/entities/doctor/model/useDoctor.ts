@@ -1,11 +1,15 @@
 import { create } from 'zustand'
 import { State, Actions, Thunks } from './types'
 import { ErrorType } from '@/shared/types/error'
-import { getDoctorSessions } from '@/shared/api/doctor/doctorSessions/doctorSessions'
-import { dateToUnix } from '@/shared/function'
+import { dateToUnix, getCurrentDate } from '@/shared/function'
 import { sessionUnixSize } from '@/shared/constants'
+import { getDoctor } from '@/shared/api/doctor/doctor'
 
-export const useDoctorSessions = create<State & Actions & Thunks>(set => ({
+export const useDoctor = create<State & Actions & Thunks>(set => ({
+  doctorInfo: {
+    name: '',
+    specialization: '',
+  },
   doctorSessions: {
     workingHours: {
       start: 0,
@@ -14,21 +18,28 @@ export const useDoctorSessions = create<State & Actions & Thunks>(set => ({
     busyTime: [],
     freeSessions: [],
   },
+  currentDate: {
+    year: 0,
+    month: 0,
+    day: 0,
+  },
   loading: true,
   error: null,
-  fetchDoctorSessions: async () => {
+  fetchDoctor: async () => {
     try {
-      const resp = await getDoctorSessions()
+      const resp = await getDoctor()
       set({loading: false})
 
-      const startWorking = dateToUnix(`${resp.workingHours.start}`)
-      const stopWorking = dateToUnix(`${resp.workingHours.stop}`)
+      const currentDate = getCurrentDate()
+
+      const startWorking = dateToUnix(currentDate, resp.workingHours.start)
+      const stopWorking = dateToUnix(currentDate, resp.workingHours.stop)
       const lastSession = stopWorking - sessionUnixSize
 
       const busyTime = resp.busyTime.map((i) => (
         {
-          start: dateToUnix(`${i.start}`),
-          stop: dateToUnix(`${i.stop}`),
+          start: dateToUnix(currentDate, i.start),
+          stop: dateToUnix(currentDate, i.stop),
         }
       )).sort((a, b) => (a.start - b.start))
 
@@ -47,6 +58,15 @@ export const useDoctorSessions = create<State & Actions & Thunks>(set => ({
         freeSessions.push(startSession)
         startSession = stopSession
       }
+
+      set({currentDate: currentDate})
+
+      set({ 
+        doctorInfo: {
+        name: resp.name,
+        specialization: resp.specialization
+        }
+      })
 
       set({
         doctorSessions: {

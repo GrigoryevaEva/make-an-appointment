@@ -3,7 +3,7 @@ import { RejectedDataType } from "@/shared/types/error"
 
 export const renderList = (freeSessions: number[]) => (
   freeSessions?.map((i) => (
-    <p>{unixToTime(i)}</p>
+    <p key={i}>{unixToTime(i)}</p>
   ))
 )
 

@@ -1,1 +1,0 @@
-export { useDoctorSessions } from "./model/useDoctorSessions";

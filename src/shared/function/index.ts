@@ -1,7 +1,7 @@
 import {
   IDate,
   ITime
-} from './types'
+} from '../types/common'
 
 export const getCurrentDate = (): IDate => {
   const date = new Date()
@@ -20,8 +20,11 @@ export const convertTimeStrToObjNum = (time: string): ITime => {
   }
 }
 
-export const dateToUnix = (time: string): number => {
-  const { year, month, day } = getCurrentDate()
+export const dateToUnix = (
+  date: IDate, 
+  time: string
+): number => {
+  const { year, month, day } = date
   const { hours, minutes } = convertTimeStrToObjNum(time)
   return new Date(
     year,

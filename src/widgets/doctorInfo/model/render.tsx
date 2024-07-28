@@ -1,10 +1,12 @@
-import { IDoctorInfo } from "@/shared/api/doctor/doctorInfo/types"
 import { RejectedDataType } from "@/shared/types/error"
 
 interface IRenderContentProps {
   loading: boolean
   error: null | RejectedDataType
-  content: IDoctorInfo
+  content: {
+    name: string
+    specialization: string
+  }
 }
 
 export const renderContent = (props: IRenderContentProps) => {
