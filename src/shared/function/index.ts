@@ -20,17 +20,15 @@ export const convertTimeStrToObjNum = (time: string): ITime => {
   }
 }
 
-export const dateToUnix = (
-  date: IDate, 
-  h: number, 
-  min: number
-  ): number => {
+export const dateToUnix = (time: string): number => {
+  const { year, month, day } = getCurrentDate()
+  const { hours, minutes } = convertTimeStrToObjNum(time)
   return new Date(
-    date.year,
-    date.month-1,
-    date.day,
-    h,
-    min
+    year,
+    month-1,
+    day,
+    hours,
+    minutes
   ).getTime()
 }
 
