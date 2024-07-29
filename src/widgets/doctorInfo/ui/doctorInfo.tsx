@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useDoctor } from '@/entities/doctor'
 import { renderContent } from '../model/render'
 
@@ -16,11 +17,15 @@ export const DoctorInfo = () => {
 
   return (
     <div>
-      {renderContent({
-        loading, 
-        error, 
-        content: doctorInfo}
-      )}
+      {
+        useMemo(() => (
+          renderContent({
+            loading,
+            error,
+            content: doctorInfo,
+          })
+        ), [doctorInfo])
+      }
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { renderContent } from '../model/render'
 import { useDoctor } from '@/entities/doctor'
 
@@ -17,11 +18,13 @@ export const FreeSessionsList = () => {
   return (
     <div>
       {
-        renderContent({
-          loading,
-          error,
-          content: freeSessions,
-        })
+        useMemo(() => (
+          renderContent({
+            loading,
+            error,
+            content: freeSessions,
+          })
+        ), [doctorSessions])
       }
     </div>
   )
