@@ -1,0 +1,28 @@
+@use '@/shared/ui/sass/variables.scss' as v;
+
+body {
+  font-family: 'Rubik';
+  background-color: v.$bg-main;
+  color: v.$fnt-main;
+
+  h1 {
+    color: v.$fnt-h1;
+    font-size: 1.75rem;
+  }
+
+  h2, h3, h4 {
+    color: v.$fnt-headers;
+  }
+
+  h2 {
+    font-size: 1.625rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.375rem;
+  }
+}

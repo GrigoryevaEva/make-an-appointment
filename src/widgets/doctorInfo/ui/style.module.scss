@@ -1,0 +1,7 @@
+@use '@/shared/ui/sass/variables.scss' as v;
+@use '@/shared/ui/sass/mixins.scss' as m;
+
+.root {
+  @include m.container;
+  @include m.containerElements;
+}

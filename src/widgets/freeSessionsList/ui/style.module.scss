@@ -1,0 +1,14 @@
+@use '@/shared/ui/sass/variables.scss' as v;
+@use '@/shared/ui/sass/mixins.scss' as m;
+
+.root {
+  @include m.container;
+  @include m.containerElements;
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 0.938rem;
+  }
+}
