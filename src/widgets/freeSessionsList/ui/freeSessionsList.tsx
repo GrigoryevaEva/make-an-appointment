@@ -12,15 +12,17 @@ export const FreeSessionsList = () => {
     error: state.error,
   }))
 
-  const { freeSessions } = doctorSessions
+  const { freeSessions } = doctorSessions;
 
   return (
     <div>
-      {renderContent({
-        loading,
-        error,
-        content: freeSessions
-      })}
+      {
+        renderContent({
+          loading,
+          error,
+          content: freeSessions,
+        })
+      }
     </div>
   )
 }

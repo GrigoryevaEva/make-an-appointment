@@ -1,10 +1,14 @@
-import { unixToTime } from "@/shared/function"
+import { FreeSession } from "@/features/makeAnAppointment"
 import { RejectedDataType } from "@/shared/types/error"
 
 export const renderList = (freeSessions: number[]) => (
-  freeSessions?.map((i) => (
-    <p key={i}>{unixToTime(i)}</p>
-  ))
+  freeSessions.map((i) => {
+    return (
+      <div key={i}>
+        <FreeSession id={i} />
+      </div>
+    )
+  })
 )
 
 interface IRenderContentProps {

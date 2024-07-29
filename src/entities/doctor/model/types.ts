@@ -21,7 +21,9 @@ type Interval = {
   readonly stop: number
 }
 
-export type Actions = {}
+export type Actions = {
+  readonly makeAnAppointment: (key: number) => void
+}
 
 export type Thunks = {
   readonly fetchDoctor: () => void

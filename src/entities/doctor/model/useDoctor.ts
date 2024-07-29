@@ -5,7 +5,7 @@ import { dateToUnix, getCurrentDate } from '@/shared/function'
 import { sessionUnixSize } from '@/shared/constants'
 import { getDoctor } from '@/shared/api/doctor/doctor'
 
-export const useDoctor = create<State & Actions & Thunks>(set => ({
+export const useDoctor = create<State & Actions & Thunks>((set, get) => ({
   doctorInfo: {
     name: '',
     specialization: '',
@@ -25,6 +25,35 @@ export const useDoctor = create<State & Actions & Thunks>(set => ({
   },
   loading: true,
   error: null,
+  makeAnAppointment: (key) => {
+
+    const busy = get().doctorSessions.busyTime
+    const free = get().doctorSessions.freeSessions
+
+    busy.splice(
+      busy.findLastIndex((i) => (
+        i.stop < key
+      )) + 1,
+      0,
+      {
+        start: key,
+        stop: key + sessionUnixSize
+      }
+    ),
+
+    free.splice(
+      free.indexOf(key),
+      1
+    ),
+
+    set((state) => ({
+      doctorSessions: {
+        workingHours: state.doctorSessions.workingHours,
+        busyTime: busy,
+        freeSessions: free,
+      },
+    }))
+  },
   fetchDoctor: async () => {
     try {
       const resp = await getDoctor()
