@@ -16,7 +16,7 @@ export const DoctorInfo = () => {
   }))
 
   return (
-    <div>
+    <div className={style.root}>
       {
         useMemo(() => (
           renderContent({

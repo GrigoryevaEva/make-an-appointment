@@ -1,5 +1,8 @@
 import { unixToTime } from '@/shared/function'
 import { useModal } from '../model/useModal'
+import { Button } from '@/shared/ui/button'
+
+import style from './style.module.scss'
 
 interface IFreeSessionProps {
   readonly id: number
@@ -21,8 +24,12 @@ export const FreeSession = (props: IFreeSessionProps) => {
   }
 
   return (
-    <div onClick={handleOpenModal}>
+    <Button 
+    key={props.id} 
+    onClick={handleOpenModal}
+    className={style.freeSession}
+    >
       {unixToTime(props.id)}
-    </div>
+    </Button>
   )
 }

@@ -1,0 +1,15 @@
+@use '@/shared/ui/sass/variables.scss' as v;
+
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: v.$bg-header;
+
+  height: 2.813rem;
+
+  border-radius: 0.438rem;
+
+  margin: 0 0.438rem 0.438rem 0.438rem;
+}

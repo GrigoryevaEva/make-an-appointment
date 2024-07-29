@@ -1,0 +1,31 @@
+@use '@/shared/ui/sass/variables.scss' as v;
+@use '@/shared/ui/sass/mixins.scss' as m;
+
+.root {
+  @include m.border;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: v.$bg-buttons;
+  &:hover {
+    background-color: v.$bg-buttons-active;
+    color: v.$fnt-buttons-active;
+  }
+
+  font-size: 1.25rem;
+
+  padding: 0.625rem;
+
+  user-select: none;
+
+  transition: all 0.2s;
+
+  &_active {
+    background-color: v.$bg-buttons-active;
+    color: v.$fnt-buttons-active;
+
+    transition: all 0.2s;
+  }
+}

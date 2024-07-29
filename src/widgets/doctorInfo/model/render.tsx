@@ -10,7 +10,12 @@ interface IRenderContentProps {
 }
 
 export const renderContent = (props: IRenderContentProps) => {
-  if (props.loading) return <p>Загрузка...</p>
-  if (props.error) return <p>{`Ошибка: ${props.error.messageError}`}</p>
-  return <><h2>{props.content.name}</h2><h3>{props.content.specialization}</h3></>
+  if (props.loading) return <p>Loading...</p>
+  if (props.error) return <p>{`Error: ${props.error.messageError}`}</p>
+  return (
+    <>
+      <h2>{props.content.name}</h2>
+      <h3>{props.content.specialization}</h3>
+    </>
+  )
 }

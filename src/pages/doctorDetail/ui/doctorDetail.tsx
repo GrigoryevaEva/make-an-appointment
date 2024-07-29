@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Header } from '@/widgets/header'
 import { DoctorInfo } from '@/widgets/doctorInfo'
 import { FreeSessionsList } from '@/widgets/freeSessionsList'
+import { AppointmentDates } from '@/widgets/appointmentDates'
 import { Modal } from '@/features/makeAnAppointment'
 import { useDoctor } from '@/entities/doctor'
 import { useModal } from '@/features/makeAnAppointment'
@@ -30,13 +31,18 @@ export const DoctorDetail = () => {
   return (
     <>
       <Header />
-      <DoctorInfo />
-      <FreeSessionsList />
-      {
-        active 
-        ? <Modal />
-        : <></>
-      }
+      <main className={style.root}>
+        <DoctorInfo />
+        <div className={style.root__containerAppointment}>
+          <AppointmentDates />
+          <FreeSessionsList />
+          {
+            active 
+            ? <Modal />
+            : <></>
+          }
+        </div>
+      </main>
     </>
   )
 }

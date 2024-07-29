@@ -3,11 +3,7 @@ import { RejectedDataType } from "@/shared/types/error"
 
 export const renderList = (freeSessions: number[]) => (
   freeSessions.map((i) => {
-    return (
-      <div key={i}>
-        <FreeSession id={i} />
-      </div>
-    )
+    return <FreeSession id={i} />
   })
 )
 

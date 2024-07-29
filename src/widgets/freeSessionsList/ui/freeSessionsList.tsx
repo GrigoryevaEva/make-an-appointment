@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 import { renderContent } from '../model/render'
 import { useDoctor } from '@/entities/doctor'
 
+import style from './style.module.scss'
+
 export const FreeSessionsList = () => {
   const {
     doctorSessions,
@@ -16,16 +18,19 @@ export const FreeSessionsList = () => {
   const { freeSessions } = doctorSessions;
 
   return (
-    <div>
-      {
-        useMemo(() => (
-          renderContent({
-            loading,
-            error,
-            content: freeSessions,
-          })
-        ), [doctorSessions])
-      }
+    <div className={style.root}>
+      <h4>Available time</h4>
+      <div className={style.root__list}>
+        {
+          useMemo(() => (
+            renderContent({
+              loading,
+              error,
+              content: freeSessions,
+            })
+          ), [doctorSessions])
+        }
+      </div>
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { Button } from '@/shared/ui/button'
 import { useDoctor } from '@/entities/doctor'
 import { useModal } from '../model/useModal'
 
@@ -35,10 +36,16 @@ export const Modal = () => {
   }
 
   return (
-    <div>
-      <p>Make an appointment at {unixToTime(keySession)}?</p>
-      <div onClick={handelMakeAnAppointment}>Yes!</div>
-      <div onClick={handelCancel}>Cancel</div>
+    <div className={style.root}>
+      <div className={style.root__modal}>
+        <h4>
+          Make an appointment at {unixToTime(keySession)}?
+        </h4>
+        <div className={style.root__buttons}>
+          <Button onClick={handelMakeAnAppointment}>Yes!</Button>
+          <Button onClick={handelCancel}>Cancel</Button>
+        </div>
+      </div>
     </div>
   )
 }
