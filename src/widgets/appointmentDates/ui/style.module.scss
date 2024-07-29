@@ -1,0 +1,15 @@
+@use '@/shared/ui/sass/mixins.scss' as m;
+
+.root {
+  @include m.container;
+  @include m.containerElements;
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    width: fit-content;
+  }
+}

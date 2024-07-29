@@ -1,0 +1,1 @@
+export const sessionUnixSize = 1800000

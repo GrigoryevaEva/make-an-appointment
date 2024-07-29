@@ -1,0 +1,1 @@
+export { useDoctor } from "./model/useDoctor";

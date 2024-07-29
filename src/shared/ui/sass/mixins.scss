@@ -1,0 +1,22 @@
+@use '@/shared/ui/sass/variables.scss' as v;
+
+@mixin container {
+  width: 80vw;
+}
+
+@mixin containerElements {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @include border;
+
+  padding: 1.25rem;
+}
+
+@mixin border {
+  border: 1px;
+  border-style: solid;
+  border-color: v.$brd;
+  border-radius: 0.625rem;
+}
